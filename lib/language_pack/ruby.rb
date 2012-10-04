@@ -14,7 +14,7 @@ class LanguagePack::Ruby < LanguagePack::Base
   JVM_BASE_URL        = "http://heroku-jvm-langpack-java.s3.amazonaws.com"
   JVM_VERSION         = "openjdk7-latest"
 
-  COUCHBASE_VENDOR_URL = "https://github.com/downloads/mschoch/heroku-buildpack-couchbase-ruby/libcouchbase-2.0.0beta-heroku.tar.gz"
+  COUCHBASE_VENDOR_URL = "http://cloud.github.com/downloads/mschoch/heroku-buildpack-couchbase-ruby/libcouchbase-2.0.0beta-heroku.tar.gz"
 
   # detects if this is a valid Ruby app
   # @return [Boolean] true if it's a Ruby app
