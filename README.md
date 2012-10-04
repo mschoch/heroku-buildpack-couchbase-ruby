@@ -11,7 +11,6 @@ Note this only works with couchbase **1.2.0.dp** so you must have `gem 'couchbas
     -----> Heroku receiving push
     -----> Fetching custom buildpack... done
     -----> Ruby/Rails app detected
-    -----> Installing libvbucket
     -----> Installing libcouchbase
     -----> Installing dependencies using Bundler version 1.1.2
            Running: bundle install --without development:test --path vendor/bundle --binstubs bin/ --deployment

@@ -14,8 +14,7 @@ class LanguagePack::Ruby < LanguagePack::Base
   JVM_BASE_URL        = "http://heroku-jvm-langpack-java.s3.amazonaws.com"
   JVM_VERSION         = "openjdk7-latest"
 
-  COUCHBASE_VENDOR_URL = "http://libcouchbase.s3.amazonaws.com/libcouchbase.gz"
-  VBUCKET_VENDOR_URL = "http://libcouchbase.s3.amazonaws.com/libvbucket.gz"
+  COUCHBASE_VENDOR_URL = "https://github.com/downloads/mschoch/heroku-buildpack-couchbase-ruby/libcouchbase-2.0.0beta-heroku.tar.gz"
 
   # detects if this is a valid Ruby app
   # @return [Boolean] true if it's a Ruby app
@@ -56,7 +55,6 @@ class LanguagePack::Ruby < LanguagePack::Base
     setup_language_pack_environment
     setup_profiled
     allow_git do
-      install_libvbucket
       install_libcouchbase
       run("cp -R vendor/couchbase /app/vendor/couchbase")
       #install_couchbase_gem
@@ -346,16 +344,6 @@ ERROR
   def install_couchbase_gem
     topic("Installing couchbase")
     run("gem install couchbase --pre  --no-ri --no-rdoc --env-shebang -- --with-libcouchbase-dir=/app/vendor/couchbase")
-  end
-
-  def install_libvbucket
-    topic("Installing libvbucket")
-    bin_dir = "vendor/couchbase"
-    FileUtils.mkdir_p bin_dir
-    Dir.chdir(bin_dir) do |dir|
-      run("curl #{VBUCKET_VENDOR_URL} -s -o - | tar xzf -")
-      #run("chmod +x #{path}")
-    end
   end
 
   def install_libcouchbase
